@@ -140,6 +140,7 @@ class TextWidget: public Widget {
     void setText(const char* txt, const char *format);
     bool uppercase() { return _uppercase; }
     void loop() { if(_active) _draw(); }
+    bool run(bool force = false) override { if(_active) { _draw(); return true; } return false; }
 
 protected:
     std::string text;
@@ -172,6 +173,7 @@ class ScrollWidget: public TextWidget {
     //~ScrollWidget();
     void init(const char* separator, ScrollConfig conf, uint16_t fgcolor, uint16_t bgcolor);
     void loop();
+    bool run(bool force = false) override { if(_active) { _draw(); return true; } return false; }
     void setText(const char* txt);
     void setText(const char* txt, const char *format);
 
