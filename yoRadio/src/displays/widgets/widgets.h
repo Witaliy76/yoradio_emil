@@ -139,6 +139,7 @@ class TextWidget: public Widget {
     void setText(int val, const char *format);
     void setText(const char* txt, const char *format);
     bool uppercase() { return _uppercase; }
+    void loop() { if(_active) _draw(); }
 
 protected:
     std::string text;
@@ -148,6 +149,7 @@ protected:
 #if DSP_MODEL!=DSP_DUMMY
     GFXfont *font{nullptr};
 #endif
+    void _draw() override;
     void draw();
     uint16_t realLeft();
 };

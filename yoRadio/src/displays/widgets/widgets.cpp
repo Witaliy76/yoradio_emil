@@ -74,6 +74,16 @@ void TextWidget::draw(){
   oldtext = text;
 }
 
+void TextWidget::_draw(){
+  if(!_active) return;
+  dsp->setTextColor(_fgcolor, _bgcolor);
+  dsp->setCursor(realLeft(), _config.top);
+  dsp->setFont();
+  dsp->setTextSize(_config.textsize);
+  dsp->print(text.c_str());
+  oldtext = text;
+}
+
 /************************
       SCROLL WIDGET
  ************************/
